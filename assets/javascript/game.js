@@ -39,7 +39,7 @@ document.onkeyup = function (event) {
 
 // Display the user and computer guesses, and wins/losses/ties.
 
-document.getElementById("playerLetter");
+document.getElementById("playerLetter").value;
 //playerLetterText = "Tap any letter a - z..."  + playerLetter;
 //guessesLeftText = "Your guesses left are  " + guessesLeft;
 }

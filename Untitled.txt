@@ -1,0 +1,37 @@
+// Variable
+// letters losses wins numbers of guesses
+var letters = ["a", "b",];
+var myGuess;
+var compGuess;
+var losses;
+var wins;
+var guesses;
+
+// random number between 0-25 
+// use that number to select a letter from the array
+function startGame(){
+    compGuess =  letters[randomNum];
+    guesses = 0;
+}
+
+startGame()
+
+// loop
+if (guesses < 9) {
+    // record the users guess
+    // set the user guess equal to myGuess
+
+    // if else statement to check if user was correct
+    // if user guess is not equal to computer guess
+        //increase guesses count increases by 1
+        
+
+    // if user guess is equal to computer guess
+        // user's wins goes up
+        // alert the user they won
+        startGame();
+}
+else {
+    // increase the loss count
+    startGame();
+}
