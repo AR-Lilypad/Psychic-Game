@@ -1,45 +1,53 @@
-
-
-
-//1. 'Guess what letter I'm thinking of...' variable for computer's "guess", which would need to start the game
-
-var computerLetter = computerLetter;
-var playerLetter = playerLetter;
-var letters = "abcdefghijklmnopqrstuvwxyz"
-var guessesLeft = 9;
+var playerLetters;
 var wins = 0;
-var losses = 0;
+var lost = 0;
+var guessesLeft = 9;
+var guessesSoFar = [];
+var computerLetters;
+var letters = "qwertyuiopasdfghjklzxcvbnm"
 
-var playerLetter = document.getElementById("playerLetter");
-var guessesLeftText = document.getElementById("guessesLeft-Text");
+var winsText = document.getElementById("wins-text");
+var lossesText = document.getElementById("losses-text");
+var guessesLeftText = document.getElementById("guessesleft-Text");
+var guessesSoFarText = document.getElementById("guessessofar-text");
+
+//Random letter generator for the computer choice, which has to begin the guessing.
+computerLetters = letters[Math.floor(Math.random() * letters.length)];
+//console.log(computerLetters);
 
 
-//Generates random number (decimal from 0 to 1) which is multiplied by 26 and the rounded down to the nearest whole number by the Math.floor method. 
-computerLetter = letters[Math.floor(Math.random() * letters.length)];
-console.log(computerLetter);
-
-//user's turn
-//.onkeyup initiate's player's selection as playerletter
+// }
 document.onkeyup = function (event) {
-    var playerLetter = event.key;
-    playerLetter = letters[Math.floor(Math.random() * letters.length)];
+    var playerLetters = event.key;
 
-    //if player's guess equals computerLetter, player wins gains score of 1, and clears used letters array. Supposed to reset guess # to 10 but starts at 9 instead, 
-    if (playerLetter === computerLetter) {
+    //test if players guess equals ranLetter, if true it increments wins by 1, and clears used letters array. Supposed to reset guess # to 10 but starts at 9 instead, 
+    if (playerLetters === computerLetters) {
         wins++;
-    } else if (playerLetter != computerLetter &&
-        guessesLeft - 1 === 0) {
+    } if (playerLetters !=== computerLetters)
+        guessesLeft-1;
+
+    } if (playerLetters !=== computerLetters && (guessesLeft - 1 === 0)) {
         losses++;
-         
+
+    winsText.textContent = "Wins:  " + wins;
+    lossesText.textContent = "Losses:  " + losses;
+    guessesleftText.textContent = "Guesses Left:  " + guessesLeft;
+    guessessofarText.textContent = "Guesses So Far:  " + guessesSoFar;
+
+
+
 };
 
 
-// Hide the directions
-//compLetterText.textContent = "";
+    // var wins
+    // if (playerLetters === computerLetters) {
+    //     wins++;
+    // } else if (playerLetters != computerLetters &&
+    //     guessesLeft - 1 === 0) {
+    //         losses++;
 
-// Display the user and computer guesses, and wins/losses/ties.
+    //     }
 
-document.getElementById("playerLetter").value;
-//playerLetterText = "Tap any letter a - z..."  + playerLetter;
-//guessesLeftText = "Your guesses left are  " + guessesLeft;
-}
+
+    //     var playerLetters = document.getElementById("playerLetters");
+    //     var guessesLeftText = document.getElementById("guessesLeft-Text");

@@ -24,8 +24,16 @@ body {
         letter-spacing:  2px;
     }
 
+    body, h5 {
+        font-family: 'Racing Sans One', cursive;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing:  2px;
+    }
+
     body, p {
         font-family: 'Racing Sans One', cursive;
         font-size: 18px;
+        font-weight: 300;
         letter-spacing:  2px;
     }
