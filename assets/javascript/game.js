@@ -1,53 +1,42 @@
 var playerLetters;
 var wins = 0;
-var lost = 0;
+var losses = 0;
 var guessesLeft = 9;
 var guessesSoFar = [];
-var computerLetters;
-var letters = "qwertyuiopasdfghjklzxcvbnm"
+var computerLetters = []
+var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
 
-var winsText = document.getElementById("wins-text");
+var winsText = document.getElementById('wins-text');
 var lossesText = document.getElementById("losses-text");
 var guessesLeftText = document.getElementById("guessesleft-Text");
 var guessesSoFarText = document.getElementById("guessessofar-text");
 
-//Random letter generator for the computer choice, which has to begin the guessing.
+//Random letter generator for the computer choice, which needs to begin the guessing.
 computerLetters = letters[Math.floor(Math.random() * letters.length)];
-//console.log(computerLetters);
+letters.push(computerLetters);
+console.log(computerLetters);
 
 
-// }
+// player chooses letters to answer computer choice
 document.onkeyup = function (event) {
     var playerLetters = event.key;
-
-    //test if players guess equals ranLetter, if true it increments wins by 1, and clears used letters array. Supposed to reset guess # to 10 but starts at 9 instead, 
+    letters.push(playerLetters);
+    for(var i = 0; i < playerLetters.length; i++){
+    console.log(playerLetters.charAt(i));
+}
+    //test if playerLetters equals computerLetters, if true it increments wins by 1, if false player gets additional tries up to 10 times.  Display guesses so far.
     if (playerLetters === computerLetters) {
-        wins++;
-    } if (playerLetters !=== computerLetters)
-        guessesLeft-1;
-
-    } if (playerLetters !=== computerLetters && (guessesLeft - 1 === 0)) {
+        wins = wins + 1;  // wins += 1
+    } else if (playerLetters !== computerLetters) {
+        guessesLeft--;
+        guessesSoFar;
+    } else ((playerLetters !== computerLetters) && (guessesLeft === 0)) ;
         losses++;
+    }
 
-    winsText.textContent = "Wins:  " + wins;
-    lossesText.textContent = "Losses:  " + losses;
-    guessesleftText.textContent = "Guesses Left:  " + guessesLeft;
-    guessessofarText.textContent = "Guesses So Far:  " + guessesSoFar;
+//function restart (this); {
 
-
-
-};
-
-
-    // var wins
-    // if (playerLetters === computerLetters) {
-    //     wins++;
-    // } else if (playerLetters != computerLetters &&
-    //     guessesLeft - 1 === 0) {
-    //         losses++;
-
-    //     }
-
-
-    //     var playerLetters = document.getElementById("playerLetters");
-    //     var guessesLeftText = document.getElementById("guessesLeft-Text");
+winsText.textContent = "Wins:  " + wins;
+lossesText.textContent = "Losses:  " + losses;
+guessesLeftText.textContent = "Guesses Left:  " + guessesLeft;
+guessesSoFarText.textContent = "Guesses So Far:  " + guessesSoFar;
