@@ -11,43 +11,30 @@ var lossesText = document.getElementById("losses-text");
 var guessesLeftText = document.getElementById("guessesleft-Text");
 var guessesSoFarText = document.getElementById("guessessofar-text");
 
-//Random letter generator for the computer choice, which has to begin the guessing.
+//Random letter generator for the computer choice, which needs to begin the guessing.
 computerLetters = letters[Math.floor(Math.random() * letters.length)];
-//console.log(computerLetters);
+console.log(computerLetters);
 
 
-// }
+// player chooses letters to answer computer choice
 document.onkeyup = function (event) {
     var playerLetters = event.key;
 
-    //test if players guess equals ranLetter, if true it increments wins by 1, and clears used letters array. Supposed to reset guess # to 10 but starts at 9 instead, 
+    //test if playerLetters equals computerLetters, if true it increments wins by 1, if false player gets additional tries up to 10 times.  Display guesses so far.
     if (playerLetters === computerLetters) {
         wins++;
-    } if (playerLetters !=== computerLetters)
-        guessesLeft-1;
-
-    } if (playerLetters !=== computerLetters && (guessesLeft - 1 === 0)) {
+    } else if (playerLetters !== computerLetters) {
+        guessesLeft--;
+        guessesSoFar;
+    } else ((playerLetters !== computerLetters) && (guessesLeft === 0)) ;
         losses++;
+    }
 
-    winsText.textContent = "Wins:  " + wins;
-    lossesText.textContent = "Losses:  " + losses;
-    guessesleftText.textContent = "Guesses Left:  " + guessesLeft;
-    guessessofarText.textContent = "Guesses So Far:  " + guessesSoFar;
+//function restart (this); {
 
 
 
-};
-
-
-    // var wins
-    // if (playerLetters === computerLetters) {
-    //     wins++;
-    // } else if (playerLetters != computerLetters &&
-    //     guessesLeft - 1 === 0) {
-    //         losses++;
-
-    //     }
-
-
-    //     var playerLetters = document.getElementById("playerLetters");
-    //     var guessesLeftText = document.getElementById("guessesLeft-Text");
+winsText.textContent = "Wins:  " + wins;
+lossesText.textContent = "Losses:  " + losses;
+guessesleftText.textContent = "Guesses Left:  " + guessesLeft;
+guessessofarText.textContent = "Guesses So Far:  " + guessesSoFar;
