@@ -17,6 +17,7 @@ function startGame(){
 startGame()
 
 // loop
+in beginning win
 if (guesses < 9) {
     // record the users guess
     // set the user guess equal to myGuess
@@ -35,3 +36,4 @@ else {
     // increase the loss count
     startGame();
 }
+

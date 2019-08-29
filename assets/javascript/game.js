@@ -5,6 +5,7 @@ var guessesLeft = 9;
 var guessesSoFar = [];
 var computerLetters;
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var playAgain;
 
 var winsText = document.getElementById('wins-text');
 var lossesText = document.getElementById("losses-text");
@@ -31,7 +32,14 @@ document.onkeyup = function (event) {
         wins = wins + 1;
         alert("You won! Hmmm do you have psychic powers?");
         playAgain = confirm("Want to play again?");
-
+        console.log(playAgain);
+        if (playAgain === true) {                          // break this function out on it's own and call the function on its own for win and lose.
+            computerLetters = letters[Math.floor(Math.random() * letters.length)];
+            console.log(computerLetters);
+            guessesLeft = 9;
+            console.log(guessesLeft);
+            guessesSoFar = [];
+        }
         // wins += 1
     } else if (playerLetters !== computerLetters) {
         guessesLeft--;
@@ -41,7 +49,7 @@ document.onkeyup = function (event) {
     if ((playerLetters !== computerLetters) && (guessesLeft === 0)) {
         losses++;
         alert("Nah, you're not a psychic... at least this time around!");
-        confirm("Play again?")
+        playAgain = confirm("Want to play again?");
     }
 
     winsText.textContent = "Wins:  " + wins;
