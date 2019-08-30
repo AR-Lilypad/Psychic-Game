@@ -20,7 +20,10 @@ computerLetters = letters[Math.floor(Math.random() * letters.length)];
 console.log(computerLetters, "computer guess");
 console.log(letters, 'this is the letters array');
 
-document.onkeyup = function (event) {                    // player chooses letters to answer computer choice    
+
+
+// player chooses letters to answer computer choice
+document.onkeyup = function (event) {
     var playerLetters = event.key;
     for (var i = 0; i < playerLetters.length; i++) {
         guessesSoFar.push(playerLetters.charAt(i));     //push the letters to the guesses so far array  check mdn arrays - join?  
@@ -30,39 +33,40 @@ document.onkeyup = function (event) {                    // player chooses lette
         wins = wins + 1;                                       // wins += 1
         alert("You won! Hmmm do you have psychic powers?");
         playAgain = confirm("Want to play again?");
-        // playAgain();
+        console.log(playAgain);
 
-        if (playAgain === true) {                          // ((how do I) break this function out on it's own and call the function for win AND lose?
-            computerLetters = letters[Math.floor(Math.random() * letters.length)];
-            console.log(computerLetters);
-            guessesLeft = 9;
-            console.log(guessesLeft);
-            guessesSoFar = [];
+    else if (playerLetters !== computerLetters) {
+            guessesLeft--;
+            guessesSoFar;
+
+
+            if ((playerLetters !== computerLetters) && (guessesLeft === 0)) {
+                losses++;
+                alert("Nah, you're not a psychic... at least this time around!");
+                playAgain = confirm("Want to play again?");
+                playAgain();
+
+
+                function (playAgain) {
+                    if (playAgain === true) {                          // break this function out on it's own and call the function on its own for win and lose.
+                        computerLetters = letters[Math.floor(Math.random() * letters.length)];
+                        console.log(computerLetters);
+                        guessesLeft = 9;
+                        console.log(guessesLeft);
+                        guessesSoFar = [];
+                    }
+                }
+            }
         }
-
-    } else if (playerLetters !== computerLetters) {
-        guessesLeft--;
-        guessesSoFar;
-    }
-
-    if ((playerLetters !== computerLetters) && (guessesLeft < 0)) {
-        losses++;
-        alert("Nah, you're not a psychic... at least this time around!");
-        playAgain = confirm("Want to play again?");
-
-        if (playAgain === true) {
-            computerLetters = letters[Math.floor(Math.random() * letters.length)];
-            console.log(computerLetters);
-            guessesLeft = 9;
-            console.log(guessesLeft);
-            guessesSoFar = [];
-        }
-
-    }
+    };
 
     winsText.textContent = "Wins:  " + wins;
     lossesText.textContent = "Losses:  " + losses;
     guessesLeftText.textContent = "Guesses Left:  " + guessesLeft;
     guessesSoFarText.textContent = "Guesses So Far:  " + guessesSoFar;
-}
+    // winsText.textContent = "Wins:  " + wins;
+    // lossesText.textContent = "Losses:  " + losses;
+    // guessesLeftText.textContent = "Guesses Left:  " + guessesLeft;
+    // guessesSoFarText.textContent = "Guesses So Far:  " + guessesSoFar;
 
+//function restart (this); {
