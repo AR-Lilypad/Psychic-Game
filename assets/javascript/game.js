@@ -57,7 +57,6 @@ document.onkeyup = function (event) {                    // player chooses lette
             console.log(guessesLeft);
             guessesSoFar = [];
         }
-
     }
 
     winsText.textContent = "Wins:  " + wins;
@@ -65,4 +64,9 @@ document.onkeyup = function (event) {                    // player chooses lette
     guessesLeftText.textContent = "Guesses Left:  " + guessesLeft;
     guessesSoFarText.textContent = "Guesses So Far:  " + guessesSoFar;
 }
+winsText.textContent = "Wins:  " + wins;
+lossesText.textContent = "Losses:  " + losses;
+guessesLeftText.textContent = "Guesses Left:  " + guessesLeft;
+guessesSoFarText.textContent = "Guesses So Far:  " + guessesSoFar;
+
 
