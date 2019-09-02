@@ -3,7 +3,7 @@
 var playerLetters;
 var wins = 0;
 var losses = 0;
-var guessesLeft = 9;
+var guessesLeft = 10;
 var guessesSoFar = [];
 var computerLetters;
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -20,7 +20,10 @@ computerLetters = letters[Math.floor(Math.random() * letters.length)];
 console.log(computerLetters, "computer guess");
 console.log(letters, 'this is the letters array');
 
-document.onkeyup = function (event) {                    // player chooses letters to answer computer choice    
+
+
+// player chooses letters to answer computer choice
+document.onkeyup = function (event) {
     var playerLetters = event.key;
     for (var i = 0; i < playerLetters.length; i++) {
         guessesSoFar.push(playerLetters.charAt(i));     //push the letters to the guesses so far array  check mdn arrays - join?  
@@ -30,9 +33,10 @@ document.onkeyup = function (event) {                    // player chooses lette
         wins = wins + 1;                                       // wins += 1
         alert("You won! Hmmm do you have psychic powers?");
         playAgain = confirm("Want to play again?");
+        console.log(playAgain);
         // playAgain();
 
-        if (playAgain === true) {                          // ((how do I) break this function out on it's own and call the function for win AND lose?
+        if (playAgain === true) {                                                     // break this function out on it's own and call the function on its own for win and lose. (need help to do this)
             computerLetters = letters[Math.floor(Math.random() * letters.length)];
             console.log(computerLetters);
             guessesLeft = 9;
@@ -45,18 +49,21 @@ document.onkeyup = function (event) {                    // player chooses lette
         guessesSoFar;
     }
 
-    if ((playerLetters !== computerLetters) && (guessesLeft < 0)) {
+    if ((playerLetters !== computerLetters) && (guessesLeft <= 0)) {
         losses++;
         alert("Nah, you're not a psychic... at least this time around!");
         playAgain = confirm("Want to play again?");
-
-        if (playAgain === true) {
+        if (playAgain === true) {                                                       // break this function out on it's own and call the function on its own for win and lose.
             computerLetters = letters[Math.floor(Math.random() * letters.length)];
             console.log(computerLetters);
             guessesLeft = 9;
             console.log(guessesLeft);
             guessesSoFar = [];
         }
+    }
+    if (playAgain === false) {
+        alert("Oh well, goodbye. Please close or refresh your Browser." )
+        return;
     }
 
     winsText.textContent = "Wins:  " + wins;
